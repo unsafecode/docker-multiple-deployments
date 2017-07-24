@@ -2,4 +2,7 @@ FROM nginx
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
+RUN mkdir -p /var/www/control-panel/
+COPY ./index.html /var/www/control-panel/index.html
+
 EXPOSE 80

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MyApp - Control Panel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1>MyApp - Control Panel</h1>
+
+            <p>
+                This page lets you control which channel of the application you want to access. It does so by setting a cookie <em>via JavaScript</em>, which is <strong>unlikely the best option in a real-world app!</strong>. Yet still, for this demo is
+                just fine: it's easy and works comfortably.
+            </p>
+
+            <p>
+                <button class="btn btn-success" onclick="setChannel('stable')">
+                <i class="glyphicon glyphicon-globe"></i>
+                Stay safe on the STABLE channel</button>
+                <button class="btn btn-warning" onclick="setChannel('canary')">
+                <i class="glyphicon glyphicon-fire"></i>
+                Enroll for CANARY channel</button>
+                <a class="btn btn-primary" style="" href="/" target="_blank">
+                    <i class="glyphicon glyphicon-log-in"></i> Test API</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function setChannel(channel) {
+            document.cookie = "CHANNEL=" + channel + ";path=/";
+            alert("Done! You are now on the "+ channel + " channel.\nGo and test the API!");
+        }
+    </script>
+</body>
+
+</html>
