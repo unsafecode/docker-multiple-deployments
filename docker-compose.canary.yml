@@ -1,8 +1,5 @@
 version: '3'
 services:
-  nginx:
-    ports:
-        - "9002:80"
   app:
     environment:
       - CHANNEL=canary

@@ -1,8 +1,5 @@
 version: '3'
 services:
-  nginx:
-    ports:
-        - "9001:80"
   app:
     environment:
       - CHANNEL=stable
