@@ -1,7 +1,7 @@
 const express = require("express");
 
 const app = express();
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 
 app.use("/", (req, res) => {
     res.json({

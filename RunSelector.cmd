@@ -1,0 +1,1 @@
+docker-compose -f version-selector.yml up -d --build
