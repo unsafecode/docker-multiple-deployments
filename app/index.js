@@ -6,6 +6,7 @@ const VERSION = "1.0.0";
 app.use("/", (req, res) => {
     res.json({
         message: "Hello!",
+        channel: process.env.CHANNEL,
         VERSION
     });
 });

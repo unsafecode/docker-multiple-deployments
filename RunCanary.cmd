@@ -1,0 +1,1 @@
+docker-compose -p myapp_canary -f docker-compose.yml -f docker-compose.canary.yml up -d --build

@@ -60,15 +60,15 @@ From a "developer" perspective, you should have a fair understading of:
 
 1. Open a shell prompt (on Windows, either `cmd.exe` or `powershell`), so you do not miss any output in case of issues.
 
-1. Start `RunProd.cmd`
+1. Start `RunStable.cmd`
 
 1. Open your browser and navigate to [http://localhost:9001](http://localhost:9001). If everything's OK, you will get a `200 OK` response with some JSON.
 
-1. Now start `RunTest.cmd`, and hit [http://localhost:9002](http://localhost:9002). The two responses will match, since the app is exactly the same at this point.
+1. Now start `RunCanary.cmd`, and hit [http://localhost:9002](http://localhost:9002). The two responses will match, since the app is exactly the same at this point.
 
 1. Let's now make a change to the app and release it to the _test_ channel. Open the `app/index.js`file and change the `VERSION` constant to `"1.0.1"` (or whatever you prefer).
 
-1. Now start `RunTest.cmd` and hit again [http://localhost:9002](http://localhost:9002)
+1. Now start `RunCanary.cmd` and hit again [http://localhost:9002](http://localhost:9002)
 
 1. New version should be reported in the output.
 
@@ -82,15 +82,16 @@ From a "developer" perspective, you should have a fair understading of:
 
 First of all, we have our regular `docker-compose.yml` file. However, if you read it carefully, you'll notice an important section is missing: `nginx` service has is `ports` section missing.
 
-That is actually found in the other two files, `docker-compose.prod.yml` and `docker-compose.test.yml`, that override the default configuration by setting each a different mapping.
+That is actually found in the other two files, `docker-compose.stable.yml` and `docker-compose.canary.yml`, that override the default configuration by setting each a different mapping.
 
 However, this is __not__ enough to achieve our goal, since Docker has still no way to distinguish two versions of the same images.
 
-Fortunately, there's another option you can supply to `docker-compose`, the `--project-name` (short `-p`) argument. If you take a look at both scripts, you'll notice that we're using two different values, `myapp` in production, and `myapp_test` otherwise.
+Fortunately, there's another option you can supply to `docker-compose`, the `--project-name` (short `-p`) argument. If you take a look at both scripts, you'll notice that we're using two different values, `myapp` in production, and `myapp_canary` otherwise.
 
 Indeed, this makes Docker deploy two different apps in practice. So, the two commands are simply:
-- `docker-compose -p myapp -f docker-compose.yml -f docker-compose.prod.yml up -d --build`
-- `docker-compose -p myapp_test -f docker-compose.yml -f docker-compose.prod.yml up -d --build`
+
+- `docker-compose -p myapp -f docker-compose.yml -f docker-compose.stable.yml up -d --build`
+- `docker-compose -p myapp_test -f docker-compose.yml -f docker-compose.canary.yml up -d --build`
 
 ## References
 
