@@ -1,5 +1,8 @@
 # Multiple Deployment w/ Docker Compose
 
+## Changelog
+- July 24th, 2017: __be sure to check the new `cookie-selector` branch, featuring an improved solution__
+
 ## Motivation
 
 I wanted to demo a simple way to enable deploying different versions
