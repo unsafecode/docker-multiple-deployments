@@ -1,0 +1,1 @@
+docker-compose -p myapp -f docker-compose.yml -f docker-compose.stable.yml up -d --build
