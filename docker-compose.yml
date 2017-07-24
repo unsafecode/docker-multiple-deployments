@@ -4,7 +4,10 @@ services:
     build: ./proxy
     networks:
         - mynet
+        - global
     restart: on-failure
+    ports:
+        - "80"
   app:
     build: ./app
     ports:
@@ -14,3 +17,5 @@ services:
     restart: on-failure
 networks: 
     mynet:
+    global:
+        external: true

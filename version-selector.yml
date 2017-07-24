@@ -1,0 +1,12 @@
+version: '3'
+services:
+  version-selector:
+    build: ./version-selector
+    restart: on-failure
+    ports:
+        - "9999:80"
+    networks:
+      - global
+networks:
+  global:
+    external: true
