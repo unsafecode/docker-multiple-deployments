@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx:
+    build: ./proxy
+    networks:
+        - mynet
+    restart: on-failure
+  app:
+    build: ./app
+    ports:
+        - "3000"
+    networks:
+        - mynet
+    restart: on-failure
+networks: 
+    mynet:
